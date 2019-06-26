@@ -23,6 +23,7 @@ class App extends Component {
     ]
   }
 
+  //Toggle task complete/uncomplete
   markComplete = (id) =>{
         this.setState({ todos: this.state.todos.map(todo => {
           if (todo.id === id) {
@@ -32,10 +33,15 @@ class App extends Component {
         })});
   }
 
+  //Delete to do item
+  delTodo = (id) => {
+    this .setState({ todos: [...this.state.todos.filter(todo => todo.id !== id)] });
+  }
+
   render() {
   return (
     <div className="App">
-      <Todos todos={this.state.todos} markComplete={this.markComplete} />
+      <Todos todos={this.state.todos} markComplete={this.markComplete} delTodo={this.delTodo}/>
     </div>
   );
 }
